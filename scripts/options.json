@@ -2,7 +2,7 @@
     "files": [
         {
             "name": "background.mp4",
-            "url": "https://github.com/izep/pi-signs/raw/master/media/test.mp4",
+            "url": "https://raw.githubusercontent.com/izep/pi-signs/master/media/test.mp4",
             "level": 0
         }
     ]
