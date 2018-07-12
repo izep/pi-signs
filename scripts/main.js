@@ -5,8 +5,8 @@ const { exec } = require("child_process");
 
 
 console.info(`Starting programs...`);
-const optionsLoc = "../running/options.json";
-const mediaLoc = "../running/media/";
+const runningLoc = "./running/";
+const optionsLoc =   runningLoc + "options.json";
 
 const sleep = function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -30,6 +30,7 @@ const downloadFile = function (path, url) {
 }
 
 async function main() {
+    if (!fs.existsSync(runningLoc)) fs.mkdirSync(runningLoc);
     await downloadFile(optionsLoc, "https://raw.githubusercontent.com/izep/pi-signs/master/scripts/options.json");
     let optsStr = fs.readFileSync(optionsLoc);
     let opts = JSON.parse(optsStr);
@@ -43,9 +44,11 @@ async function main() {
         await itm;
     });
 
-    exec(`omxplayer -o local --loop --orientation 270  ${mediaLoc}${opts[0].name}`);
-
-    console.log('exiting.');
+    console.log(new Date());
+    const player = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${mediaLoc}${opts.files[0].name}`);
+    await sleep(15000);
+    player.kill();
+    console.log(new Date());
 }
 
 main();
