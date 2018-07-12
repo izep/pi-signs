@@ -37,7 +37,7 @@ async function main() {
     console.log(JSON.stringify(opts));
     let mediaPromises = [];
     opts.files.forEach(itm => {
-        let dl = downloadFile(mediaLoc + itm.name, itm.url);
+        let dl = downloadFile(runningLoc + itm.name, itm.url);
         mediaPromises.push(dl);
     });
     mediaPromises.forEach(async itm => {
@@ -45,7 +45,7 @@ async function main() {
     });
 
     console.log(new Date());
-    const player = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${mediaLoc}${opts.files[0].name}`);
+    const player = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${runningLoc}${opts.files[0].name}`);
     await sleep(15000);
     player.kill();
     console.log(new Date());
