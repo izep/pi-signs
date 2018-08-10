@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 const http = require("https");
 const fs = require("fs");
 const { exec } = require("child_process");
-
+const omx = require("omx-layers");
 
 console.info(`Starting programs...`);
 const runningLoc = "./running/";
@@ -45,9 +45,24 @@ async function main() {
     });
 
     console.log(new Date());
-    const player = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${runningLoc}${opts.files[0].name}`);
+    // const player0 = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${runningLoc}${opts.files[0].name}`);
+    // const player1 = exec(`omxplayer -o local --loop --aspect-mode fill --no-osd ${runningLoc}${opts.files[1].name}`);
+    // const player2 = exec(`omxplayer -o local --loop --aspect-mode fill --no-osd ${runningLoc}${opts.files[2].name}`);
+    for (var i = 0; i < opts.files.length; i++) {
+        layers.push(
+            new omx({
+                audioOutput: 'local',
+                blackBackground: i === 0,
+                disableKeys: true,
+                disableOnScreenDisplay: true,
+                layer: i+1,
+                
+            })
+        );
+        layers[i].open(opts.files[i].name, { loop: true, orientation: i === 0 ? 270 : 0 });
+    }
     await sleep(15000);
-    player.kill();
+    //player.kill();
     console.log(new Date());
 }
 

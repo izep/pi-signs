@@ -2,8 +2,18 @@
     "files": [
         {
             "name": "background.mp4",
-            "url": "https://raw.githubusercontent.com/izep/pi-signs/master/media/test.mp4",
+            "url": "https://raw.githubusercontent.com/izep/pi-signs/master/media/abstSpin02.mp4",
             "level": 0
+        },
+        {
+            "name": "logo.png",
+            "url": "https://raw.githubusercontent.com/izep/pi-signs/master/media/logo.png",
+            "level": 1
+        },
+        {
+            "name": "Overlay.png",
+            "url": "https://raw.githubusercontent.com/izep/pi-signs/master/media/Overlay.png",
+            "level": 2
         }
     ]
 }
