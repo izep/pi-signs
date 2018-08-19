@@ -45,6 +45,7 @@ async function main() {
     });
 
     console.log(new Date());
+    let layers = [];
     // const player0 = exec(`omxplayer -o local --loop --orientation 270 --aspect-mode fill --no-osd ${runningLoc}${opts.files[0].name}`);
     // const player1 = exec(`omxplayer -o local --loop --aspect-mode fill --no-osd ${runningLoc}${opts.files[1].name}`);
     // const player2 = exec(`omxplayer -o local --loop --aspect-mode fill --no-osd ${runningLoc}${opts.files[2].name}`);
